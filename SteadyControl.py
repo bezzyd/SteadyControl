@@ -89,10 +89,10 @@ class DetectArgorithm:
         Функция подсчитыват количество пересечений отрезков
         движения детекций с отрезком выхода
         """
-        bx1 = self.exit_coordinates[0]
-        by1 = self.exit_coordinates[1]
-        bx2 = self.exit_coordinates[2]
-        by2 = self.exit_coordinates[3]
+        zx1 = self.exit_coordinates[0]
+        zy1 = self.exit_coordinates[1]
+        zx2 = self.exit_coordinates[2]
+        zy2 = self.exit_coordinates[3]
         count = 0
         for uniq in self.unique_id_coordinates.values():
             if len(uniq) > 1:
@@ -101,10 +101,10 @@ class DetectArgorithm:
                     ay1 = uniq[i][1]
                     ax2 = uniq[i-1][0]
                     ay2 = uniq[i-1][1]
-                    v1 = (bx2 - bx1) * (ay1 - by1) - (by2 - by1) * (ax1 - bx1)
-                    v2 = (bx2 - bx1) * (ay2 - by1) - (by2 - by1) * (ax2 - bx1)
-                    v3 = (ax2 - ax1) * (by1 - ay1) - (ay2 - ay1) * (bx1 - ax1)
-                    v4 = (ax2 - ax1) * (by2 - ay1) - (ay2 - ay1) * (bx2 - ax1)
+                    v1 = (zx2 - zx1) * (ay1 - zy1) - (zy2 - zy1) * (ax1 - zx1)
+                    v2 = (zx2 - zx1) * (ay2 - zy1) - (zy2 - zy1) * (ax2 - zx1)
+                    v3 = (ax2 - ax1) * (zy1 - ay1) - (ay2 - ay1) * (zx1 - ax1)
+                    v4 = (ax2 - ax1) * (zy2 - ay1) - (ay2 - ay1) * (zx2 - ax1)
                     if v1*v2 < 0 and v3*v4 < 0:
                         count += 1
         return count
